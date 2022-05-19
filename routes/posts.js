@@ -46,16 +46,16 @@ router.post("/", async (req, res) => {
     title: req.body.title,
     description: req.body.description,
   });
-
   try {
     const savePost = await post.save();
     res.json(savePost);
+    // console.log("savvv", savePost._id); // this log is only for saveing data's id to work with another
   } catch (err) {
     res.json({ message: err });
   }
 });
-//Update Post
 
+//Update Post
 router.patch("/:postId", async (req, res) => {
   try {
     const updatePost = await Post.updateOne(
